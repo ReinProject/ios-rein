@@ -67,13 +67,7 @@ class JobsTableViewController: UITableViewController {
         }
     }
 
-    private func getUserFromDatabase() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            [weak weakSelf = self] in
-            let realm = try! Realm()
-            weakSelf?.user = User.get(fromRealm: realm)
-        }
-    }
+    
     
     // MARK: - View
     
@@ -86,7 +80,6 @@ class JobsTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableViewAutomaticDimension
-        getUserFromDatabase()
     }
 
     // MARK: - Table view data source

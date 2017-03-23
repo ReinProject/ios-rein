@@ -22,24 +22,28 @@ class User: Object {
     }
     
     // Checks if ANY user exists in the DB, that's why class func and not method.
-    class func userExists(inRealm realm: Realm) -> Bool {
-        let count = realm.objects(User.self).count
-        if count == 1 {
-            return true
-        } else {
-            return false
+    class func userExists(dispatchTo: String, handler: @escaping (Bool) -> ()) {
+        DispatchQueue(label: dispatchTo).async {
+            let realm = try! Realm()
+            let count = realm.objects(User.self).count
+            if count == 1 {
+                handler(true)
+            } else {
+                handler(false)
+            }
         }
+        
     }
     
-    class func get(fromRealm realm: Realm) -> User? {
-        return realm.objects(User.self).first
-    }
-    
-    func insert(toRealm realm: Realm) {
-        try? realm.write() {
-            realm.add(self)
+    func insert(dispatchTo: String, handler: @escaping (Bool) -> ()) {
+        DispatchQueue(label: dispatchTo).async {
+            let realm = try! Realm()
+            try? realm.write() {
+                realm.add(self)
+            }
+            try? realm.commitWrite()
+            handler(true)
         }
-        try? realm.commitWrite()
     }
     
     func getAllJobs(handler: @escaping (Any?, Error?) -> Void) {
