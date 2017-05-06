@@ -112,13 +112,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		FA43F0281E82C41C001CA7BE /* Data Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Data Models";
-			sourceTree = "<group>";
-		};
 		FA84E5011E6F0C8800A1C83B = {
 			isa = PBXGroup;
 			children = (
@@ -144,7 +137,6 @@
 			children = (
 				FA84E5331E6F115200A1C83B /* Resources */,
 				FA84E5361E6F145200A1C83B /* Database Data Models */,
-				FA43F0281E82C41C001CA7BE /* Data Models */,
 				FA97ECD61E7D8F5C006D8176 /* Table View Cells */,
 				FA84E5371E6F148300A1C83B /* View Controllers */,
 				FA84E50D1E6F0C8800A1C83B /* AppDelegate.swift */,

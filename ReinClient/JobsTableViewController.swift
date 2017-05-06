@@ -47,7 +47,6 @@ class JobsTableViewController: UITableViewController {
             for jsonJob in jsonJobs {
                 let job = Job()
                 let mutableJsonJob = (jsonJob as! [String: Any])
-                // TODO - Create a struct with all the keys
                 job.id = mutableJsonJob[JobKeys.id] as! String
                 job.name = mutableJsonJob[JobKeys.name] as! String
                 job.details = mutableJsonJob[JobKeys.details] as! String
